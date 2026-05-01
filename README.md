@@ -63,32 +63,32 @@ I entered the deployment server IP address and port to ensure the forwarder coul
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2010.png)
 
-#Step 11
+# Step 11
 
 I configured the receiving indexer IP address and listening port to align with the previously defined Splunk Enterprise receiving port. This configuration enables secure and reliable log forwarding from the endpoint to the central Splunk instance.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2011.png)
 
-#Step 12
+# Step 12
 
 To enable the forwarding account to transmit logs effectively, I navigated to Add Data → Data Inputs within the Splunk Enterprise dashboard. This step establishes the connection between the forwarder and the Splunk data ingestion pipeline, allowing the endpoint to send logs for centralized monitoring, analysis, and threat detection in the SOC environment.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2012.png)
 
 
-#Step 13
+# Step 13
 
 I navigated to the TCP/UDP input method and configured the system to listen on port 9997 ensuring that logs forwarded from endpoints are received through a dedicated and secure communication channel.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2013.png)
 
-#Step 14
+# Step 14
 
 I defined the source type for the incoming endpoint data as “wineventlog”. Assigning the appropriate source type enables Splunk to parse and categorize Windows Event Logs accurately facilitating efficient indexing and search capabilities.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2014.png)
 
-#Step 15
+# Step 15
 
 Finally, I created a dedicated index within the Splunk Enterprise environment to store the incoming endpoint logs, naming it “win_log”
 
