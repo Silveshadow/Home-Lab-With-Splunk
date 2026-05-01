@@ -22,87 +22,75 @@ I started the Splunk daemon (splunkd), triggering the initialization process. Du
 
 # Step 4
 
-I accessed the Wazuh dashboard by navigating to the Linux host’s IP address over HTTPS (port 443), confirming secure connectivity to the SIEM interface.
-
+I was able to access the splunk enterprise instance hosted on port 8000.
 
 ![Capture2](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%204.png)
 
 # Step 5
 
-Upon successful authentication, I reviewed the centralized dashboard, which provided visibility into security events, alerts, and identified vulnerabilities across the environment. The interface allowed me to monitor alert severity levels and gain insight into potential threats and system exposures in real time.
+I was able to login with the credentials I created veryifing that the instance was operational.
 
 
 ![Capture2](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%205.png)
 
 # Step 6
 
-To extend endpoint visibility, I deployed the Wazuh Agent on a Windows system. After installation, I configured the agent to communicate with the Wazuh manager by specifying the manager’s IP address and importing the authentication key. This enabled secure registration of the endpoint.
+I proceeded to configure data ingestion for endpoint monitoring by navigating to the Add Data section. Within this interface, I selected Forwarding and Receiving to establish a forwarder configuration for collecting logs from endpoint scanning solutions critical for centralized log aggregation, enabling comprehensive visibility into endpoint activity and facilitating SOC monitoring and threat detection workflows.
 
 ![Capture2](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%206.png)
 
 # Step 7
 
-During the initial deployment, the Wazuh agent failed to connect to the manager, as indicated in the log: the connection attempt to 192.168.86.209:1514 was unsuccessful. Upon investigation, it was determined that the authentication key configured on the agent was incorrect, preventing successful communication with the SIEM manager.
+To continue the configuration of the endpoint data ingestion pipeline, I navigated to and selected Configure Receiving enabling the instance to accept incoming data from remote forwarders.
 
 ![Captureii](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%207.png)
 
 # Step 8
 
-After retrieving the correct authentication key, the agent was reconfigured and successfully started.
+I specified a listening port 9997 for the instance to receive forwarded logs ensuring secure and structured data ingestion from remote endpoints.
 
 ![Capture;;](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%208.png)
 
 # Step 9
 
-Cheching the logs confirmed that the agent established a connection with the Wazuh manager, and all relevant modules, including File Integrity Monitoring (FIM), initialized correctly. Policy evaluations and security configuration assessments executed as expected, indicating the agent is now fully operational and actively monitoring the endpoint.
+I went to my personal Windows workstation and deployed the Splunk Universal Forwarder. During installation, I created a dedicated forwarding account with administrative credentials to securely transmit endpoint logs to the Splunk Enterprise instance. This configuration establishes the foundation for continuous log collection and centralized monitoring, enabling enhanced visibility into endpoint activity and supporting proactive threat detection in the SOC environment.
 
 ![eee](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%209.png)
 
 # Step 10
 
-I went back to my linux virtual machine and saw that the agent account was able to connect to the SIEM manager
+I entered the deployment server IP address and port to ensure the forwarder could communicate with the central Splunk instance for configuration and management purposes.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2010.png)
 
 #Step 11
 
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
+I configured the receiving indexer IP address and listening port to align with the previously defined Splunk Enterprise receiving port. This configuration enables secure and reliable log forwarding from the endpoint to the central Splunk instance.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2011.png)
 
 #Step 12
 
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
+To enable the forwarding account to transmit logs effectively, I navigated to Add Data → Data Inputs within the Splunk Enterprise dashboard. This step establishes the connection between the forwarder and the Splunk data ingestion pipeline, allowing the endpoint to send logs for centralized monitoring, analysis, and threat detection in the SOC environment.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2012.png)
 
 
 #Step 13
 
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
+I navigated to the TCP/UDP input method and configured the system to listen on port 9997 ensuring that logs forwarded from endpoints are received through a dedicated and secure communication channel.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2013.png)
 
 #Step 14
 
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
+I defined the source type for the incoming endpoint data as “wineventlog”. Assigning the appropriate source type enables Splunk to parse and categorize Windows Event Logs accurately facilitating efficient indexing and search capabilities.
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2014.png)
 
 #Step 15
 
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
+Finally, I created a dedicated index within the Splunk Enterprise environment to store the incoming endpoint logs, naming it “win_log”
 
 ![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2015.png)
 
-#Step 16
-
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
-
-![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2016.png)
-
-#Step 17
-
-Finally, I was able to review the most recent alerts demonstrating that the agent is actively collecting and forwarding security telemetry to the manager. The alert data includes detailed system and network activity, indicating that monitoring and compliance modules are functioning as expected.
-
-![Capturedd](https://github.com/Silveshadow/Home-Lab-With-Splunk/blob/main/Step%2017.png)
